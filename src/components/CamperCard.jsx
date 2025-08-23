@@ -14,7 +14,12 @@ function CamperCard({ camper }) {
 
   return (
     <Card>
-      <img src={camper.gallery[0]} alt={camper.name} width="100%" />
+     <img
+  src={camper.gallery?.[0]?.original || 'https://picsum.photos/200/300'}
+  alt={camper.name || 'Camper'}
+  width="100%"
+/>
+
       <h3>{camper.name}</h3>
       <p>Price: {camper.price.toFixed(2)}</p>
       <button onClick={() => dispatch(toggleFavorite(camper.id))} style={{ cursor: 'pointer' }}>
