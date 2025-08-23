@@ -1,91 +1,3 @@
-// import { useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { fetchCamperById } from '../redux/campersSlice';
-// import BookingForm from '../components/BookingForm';
-// import Loader from '../components/Loader';
-// import styled from 'styled-components';
-
-// const Container = styled.div`
-//   padding: 20px;
-// `;
-
-// const CamperImage = styled.img`
-//   width: 200px;
-//   height: 150px;
-//   object-fit: cover;
-//   margin: 5px;
-//   border: 1px solid #ddd;
-// `;
-
-// function CamperPage() {
-//   const { id } = useParams();
-//   const dispatch = useDispatch();
-//   const { selectedCamper, loading, error } = useSelector((state) => state.campers);
-
-//   useEffect(() => {
-//     dispatch(fetchCamperById(id));
-//   }, [dispatch, id]);
-
-//   if (loading) return <Loader />;
-//   if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
-//   if (!selectedCamper) return <div>Camper not found</div>;
-
-//   const features = ['transmission', 'engine', 'AC', 'bathroom', 'kitchen', 'TV', 'radio', 'refrigerator', 'microwave', 'gas', 'water'];
-//   const details = ['form', 'length', 'width', 'height', 'tank', 'consumption'];
-//   const placeholderImage = 'https://picsum.photos/200/300';
-
-//   console.log('CamperPage selectedCamper:', selectedCamper);
-//   console.log('CamperPage gallery:', selectedCamper.gallery);
-
-//   return (
-//     <Container>
-//       <h1>{selectedCamper.name || 'No name'}</h1>
-//       <p>Price: {(selectedCamper.price || 0).toFixed(2)}</p>
-//       <div>
-//         {selectedCamper.gallery && Array.isArray(selectedCamper.gallery) && selectedCamper.gallery.length > 0 ? (
-//           selectedCamper.gallery.map((img, index) => (
-//             <CamperImage
-//               key={index}
-//               src={img.original}
-//               alt={selectedCamper.name || 'Camper'}
-//               onError={(e) => {
-//                 console.error('Image failed to load:', img.original);
-//                 e.target.src = placeholderImage;
-//               }}
-//             />
-//           ))
-//         ) : (
-//           <CamperImage src={placeholderImage} alt="Placeholder" />
-//         )}
-//       </div>
-//       <h3>Features:</h3>
-//       <ul>
-//         {features.map((feature) => selectedCamper[feature] && <li key={feature}>{feature}: {selectedCamper[feature]}</li>)}
-//       </ul>
-//       <h3>Details:</h3>
-//       <ul>
-//         {details.map((detail) => selectedCamper[detail] && <li key={detail}>{detail}: {selectedCamper[detail]}</li>)}
-//       </ul>
-//       <h3>Reviews:</h3>
-//       <ul>
-//         {selectedCamper.reviews && Array.isArray(selectedCamper.reviews) && selectedCamper.reviews.length > 0 ? (
-//           selectedCamper.reviews.map((review, index) => (
-//             <li key={index}>
-//               {review.reviewer_name}: {review.reviewer_rating} stars - {review.comment}
-//             </li>
-//           ))
-//         ) : (
-//           <li>No reviews available</li>
-//         )}
-//       </ul>
-//       <BookingForm camperId={id} />
-//     </Container>
-//   );
-// }
-
-// export default CamperPage;
-
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -121,10 +33,10 @@ const Reviews = styled.div`
 function CamperPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { selectedCamper, loading, error } = useSelector((state) => state.campers); // Використовуємо selectedCamper
+  const { selectedCamper, loading, error } = useSelector((state) => state.campers); 
 
   useEffect(() => {
-    console.log('Fetching camper with id:', id); // Дебагінг
+    console.log('Fetching camper with id:', id);
     dispatch(fetchCamperById(id));
   }, [dispatch, id]);
 

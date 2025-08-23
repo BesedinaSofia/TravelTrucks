@@ -1,22 +1,16 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from 'react';
+import '/src/styles/Hero.css';
 
-const Banner = styled.div`
-  text-align: center;
-  padding: 50px;
-  background: #f0f0f0;
-`;
-
-function HomePage() {
+export default function Hero() {
   return (
-    <Banner>
-      <h1>Welcome to TravelTrucks</h1>
-      <p>Rent your dream camper today!</p>
-      <Link to="/catalog">
-        <button style={{ cursor: 'pointer' }}>View Now</button>
-      </Link>
-    </Banner>
+    <>
+      <section className="hero-section">
+        <div className="hero-content">
+          <h1>Campers of your dreams</h1>
+          <p>You can find everything you want in our catalog</p>
+          <button className="hero-button">View Now</button>
+        </div>
+      </section>
+    </>
   );
 }
-
-export default HomePage;
