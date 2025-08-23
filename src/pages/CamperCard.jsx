@@ -1,26 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../redux/favoritesSlice';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
-const Card = styled.div`
-  border: 2px solid red; /* Яскрава рамка для видимості */
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: #fff;
-  min-height: 300px;
-`;
-
-const CamperImage = styled.img`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border: 1px solid #ddd;
-  display: block;
-  background-color: #f0f0f0; /* Сірий фон для видимості */
-`;
 
 function CamperCard({ camper }) {
   const dispatch = useDispatch();
