@@ -1,25 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCampers } from '../redux/campersSlice';
-import { setLocation, setType, toggleFeature, incrementPage, resetFilters } from '../redux/filtersSlice';
-import CamperCard from '../components/CamperCard';
-import Filters from '../components/Filters';
+import { fetchCampers } from "../redux/campersSlice";
+import { setLocation, setType, toggleFeature, incrementPage, resetFilters } from "../redux/filtersSlice";
+import CamperCard from "../pages/CamperCard";
+import Filters from "../components/Filters";
 import Loader from '../components/Loader';
-import styled from 'styled-components';
 
-const Container = styled.div`
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-`;
-
-const LoadMoreButton = styled.button`
-  padding: 10px 20px;
-  margin: 20px auto;
-  display: block;
-  cursor: pointer;
-`;
+import '../styles/Catalog.css';
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -50,28 +37,34 @@ function CatalogPage() {
   if (error) return <div style={{ color: 'red' }}>Error: {error}</div>;
 
   return (
-    <div>
-      <Filters
-        location={location}
-        type={type}
-        features={features}
-        onLocationChange={(value) => dispatch(setLocation(value))}
-        onTypeChange={(value) => dispatch(setType(value))}
-        onFeatureToggle={(feature) => dispatch(toggleFeature(feature))}
-        onApplyFilters={handleFilterChange}
-      />
-      <Container>
-        {items && items.length > 0 ? (
-          items.map((camper) => (
-            <CamperCard key={camper.id} camper={camper} />
-          ))
-        ) : (
-          <div>No campers found</div>
+    <div className="page-wrapper">
+      <aside className="sidebar">
+        <Filters
+          location={location}
+          type={type}
+          features={features}
+          onLocationChange={(value) => dispatch(setLocation(value))}
+          onTypeChange={(value) => dispatch(setType(value))}
+          onFeatureToggle={(feature) => dispatch(toggleFeature(feature))}
+          onApplyFilters={handleFilterChange}
+        />
+      </aside>
+      <main className="content">
+        <div className="cards-grid">
+          {items && items.length > 0 ? (
+            items.map((camper) => (
+              <CamperCard key={camper.id} camper={camper} />
+            ))
+          ) : (
+            <div>No campers found</div>
+          )}
+        </div>
+        {items && items.length >= page * limit && (
+          <button className="load-more-btn" onClick={handleLoadMore}>
+            Load More
+          </button>
         )}
-      </Container>
-      {items && items.length >= page * limit && (
-        <LoadMoreButton onClick={handleLoadMore}>Load More</LoadMoreButton>
-      )}
+      </main>
     </div>
   );
 }

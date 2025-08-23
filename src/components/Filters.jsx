@@ -1,129 +1,37 @@
-// import styled from 'styled-components';
+import React from 'react';
+import '../styles/Filters.css';
 
-// const Form = styled.form`
-//   padding: 20px;
-//   display: flex;
-//   gap: 10px;
-// `;
-
-// function Filters({ location, type, features, onLocationChange, onTypeChange, onFeatureToggle }) {
-//   return (
-//     <Form>
-//       <input
-//         type="text"
-//         value={location}
-//         onChange={(e) => onLocationChange(e.target.value)}
-//         placeholder="Enter location"
-//       />
-//       <select value={type} onChange={(e) => onTypeChange(e.target.value)}>
-//         <option value="">Select type</option>
-//         <option value="van">Van</option>
-//         <option value="fullyIntegrated">Fully Integrated</option>
-//         <option value="alcove">Alcove</option>
-//       </select>
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={features.AC}
-//           onChange={() => onFeatureToggle('AC')}
-//         />
-//         AC
-//       </label>
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={features.kitchen}
-//           onChange={() => onFeatureToggle('kitchen')}
-//         />
-//         Kitchen
-//       </label>
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={features.TV}
-//           onChange={() => onFeatureToggle('TV')}
-//         />
-//         TV
-//       </label>
-//       <label>
-//         <input
-//           type="checkbox"
-//           checked={features.bathroom}
-//           onChange={() => onFeatureToggle('bathroom')}
-//         />
-//         Bathroom
-//       </label>
-//     </Form>
-//   );
-// }
-
-// export default Filters;
-
-import styled from 'styled-components';
-
-const Form = styled.form`
-  padding: 20px;
-  display: flex;
-  gap: 10px;
-`;
-
-function Filters({ location, type, features, onLocationChange, onTypeChange, onFeatureToggle, onApplyFilters }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onApplyFilters();
-  };
-
+const Filters = () => {
   return (
-    <Form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={location}
-        onChange={(e) => onLocationChange(e.target.value)}
-        placeholder="Enter location"
-      />
-      <select value={type} onChange={(e) => onTypeChange(e.target.value)}>
-        <option value="">Select type</option>
-        <option value="van">Van</option>
-        <option value="fullyIntegrated">Fully Integrated</option>
-        <option value="alcove">Alcove</option>
-      </select>
-      <label>
-        <input
-          type="checkbox"
-          checked={features.AC}
-          onChange={() => onFeatureToggle('AC')}
-        />
-        AC
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          checked={features.kitchen}
-          onChange={() => onFeatureToggle('kitchen')}
-        />
-        Kitchen
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          checked={features.TV}
-          onChange={() => onFeatureToggle('TV')}
-        />
-        TV
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          checked={features.bathroom}
-          onChange={() => onFeatureToggle('bathroom')}
-        />
-        Bathroom
-      </label>
-      <button type="submit" style={{ cursor: 'pointer' }}>
-        Apply Filters
-      </button>
-    </Form>
+    <div className="filters-container">
+      <div className="location">
+        <label>Location</label>
+        <input type="text" defaultValue="Kyiv, Ukraine" readOnly />
+      </div>
+
+      <div className="filter-section">
+        <h3>Vehicle equipment</h3>
+        <div className="equipment-options">
+          <button className="equipment-btn active">AC</button>
+          <button className="equipment-btn">Automatic</button>
+          <button className="equipment-btn">Kitchen</button>
+          <button className="equipment-btn">TV</button>
+          <button className="equipment-btn">Bathroom</button>
+        </div>
+      </div>
+
+      <div className="filter-section">
+        <h3>Vehicle type</h3>
+        <div className="vehicle-options">
+          <button className="vehicle-btn">Van</button>
+          <button className="vehicle-btn">Fully Integrated</button>
+          <button className="vehicle-btn">Alcove</button>
+        </div>
+      </div>
+
+      <button className="search-btn">Search</button>
+    </div>
   );
-}
+};
 
 export default Filters;

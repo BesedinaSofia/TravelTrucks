@@ -1,0 +1,50 @@
+.page-wrapper {
+  display: flex;
+  gap: 40px;
+  padding: 40px 20px;
+  background: #f7f7f7;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #101828;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 24px 0 12px;
+  color: #475467;
+}
+
+/* Контент */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Список карток */
+.cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.load-more-btn {
+  padding: 14px 32px;
+  margin: 32px auto 0;
+  display: block;
+  cursor: pointer;
+  border: 1 solid #dadde1;
+  border-radius: 200px;
+  background: #f2f4f7;
+  font-size: 16px;
+  font-weight: 500;
+  color: #101828;
+  transition: background 0.2s ease;
+}
+
+.load-more-btn.active,
+.load-more-btn:hover {
+  border-color: #e63946;
+}
